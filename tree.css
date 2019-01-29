@@ -6,6 +6,10 @@
 html, body { height: 100%; }
 body {
     background: #222;
+    color: white;
+    font: 16px Helvetica;
+    font-weight: 100;
+    text-transform: lowercase;
 }
 #canv {
     background: #333;
