@@ -6,8 +6,8 @@
 html, body { height: 100%; }
 body {
     background: #222;
-    color: white;
-    font: 16px Helvetica;
+    color: #000;
+    font: 16px Courier New;
     font-weight: 100;
     text-transform: lowercase;
 }
@@ -17,7 +17,12 @@ body {
 #controls {
     position: fixed;
     top: 0;
+    padding: 5px;
 }
-#controls .control {
+.control {
     display: block;
+}
+.control label {
+    display: inline-block;
+    width: 120px;
 }
