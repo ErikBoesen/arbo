@@ -6,7 +6,7 @@
 html, body { height: 100%; }
 body {
     background: #222;
-    color: #000;
+    color: #ccc;
     font: 16px Courier New;
     font-weight: 100;
     text-transform: lowercase;
@@ -25,4 +25,7 @@ body {
 .control label {
     display: inline-block;
     width: 120px;
+}
+.control input {
+    vertical-align: middle;
 }

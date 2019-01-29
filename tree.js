@@ -22,7 +22,7 @@ var options = {
     },
     middleLengthMultiplier: {
         title: 'Middle scale',
-        default: .8,
+        default: .65,
         min: 0,
         max: 1,
     },
@@ -139,5 +139,4 @@ setInterval(function() {
     startTree();
 }, 50);
 
-var audio = new Audio('res/wind.mp3');
-audio.play();
+document.getElementById('wind_sound').play();
