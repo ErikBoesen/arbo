@@ -4,8 +4,16 @@ canvas.width  = window.innerWidth;
 var ctx = canvas.getContext('2d');
 
 const CONTROLS = document.getElementById('controls');
+var wind;
 
 var options = {
+    windSpeed: {
+        title: 'Wind speed',
+        default: 10,
+        min: 0,
+        max: 100,
+        step: 1,
+    },
     branchLengthMultiplier: {
         title: 'Branch scale',
         default: .75,
@@ -26,18 +34,19 @@ var options = {
         step: 1,
     },
     angle: {
-        title: 'Spread angle',
+        title: 'Spread',
         default: 30,
         min: 0,
         max: 120,
     },
     tilt: {
-        title: 'Tilt angle',
+        title: 'Tilt',
         default: 0,
         min: -90,
         max: 90,
     },
 };
+
 
 for (option in options) {
     control = document.createElement('div');
@@ -68,7 +77,8 @@ for (option in options) {
 
 ctx.strokeStyle = 'white';
 function random() {
-    return (Math.random() - 0.5) / 80;
+    //return (Math.random() - 0.5) / 80;
+    return 0;
 }
 function radians(degrees) {
     return degrees * Math.PI / 180;
@@ -83,15 +93,15 @@ function drawBranch(iteration, length, startX, startY, angle) {
         drawBranch(iteration - 1,
                    length * options.branchLengthMultiplier.value,
                    endX, endY,
-                   angle + radians(parseFloat(options.angle.value) + parseFloat(options.tilt.value)) + random());
+                   angle + radians(parseFloat(options.angle.value) + parseFloat(options.tilt.value) + wind) + random());
         drawBranch(iteration - 1,
                    length * options.branchLengthMultiplier.value * options.middleLengthMultiplier.value,
                    endX, endY,
-                   angle + radians(parseFloat(options.tilt.value)) + random());
+                   angle + radians(parseFloat(options.tilt.value) + wind) + random());
         drawBranch(iteration - 1,
                    length * options.branchLengthMultiplier.value,
                    endX, endY,
-                   angle + radians(-parseFloat(options.angle.value) + parseFloat(options.tilt.value)) + random());
+                   angle + radians(-parseFloat(options.angle.value) + parseFloat(options.tilt.value) + wind) + random());
     }
 }
 
@@ -113,4 +123,10 @@ oninput = function(e) {
     startTree();
 };
 
+var time = 0;
 startTree();
+setInterval(function() {
+    time++;
+    wind = (2+Math.sin(time / 20 * 2*Math.PI)) * options.windSpeed.value / 10;
+    startTree();
+}, 50);
