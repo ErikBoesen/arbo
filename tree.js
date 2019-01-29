@@ -3,6 +3,8 @@ canvas.height = window.innerHeight;
 canvas.width  = window.innerWidth;
 var ctx = canvas.getContext('2d');
 
+const CONTROLS = document.getElementById('controls');
+
 var options = {
     sideLengthMultiplier: {
         default: .75,
@@ -21,13 +23,11 @@ var options = {
         step: 1,
     },
     angle: {
-        default: Math.PI / 3,
-        min: -Math.PI,
-        max:  Math.PI,
+        default: (Math.PI / 3),
+        min: 0,
+        max: (Math.PI),
     },
 };
-
-const CONTROLS = document.getElementById('controls');
 
 for (option in options) {
     control = document.createElement('div');
@@ -67,9 +67,18 @@ function drawBranch(iteration, length, startX, startY, angle) {
     var endY = startY + Math.sin(angle) * length;
     ctx.lineTo(endX, height - endY);
     if (iteration > 0) {
-        drawBranch(iteration - 1, length * options.sideLengthMultiplier.value, endX, endY, angle - Math.PI / 3 + random());
-        drawBranch(iteration - 1, length * options.middleLengthMultiplier.value, endX, endY, angle + 0 + random());
-        drawBranch(iteration - 1, length * options.sideLengthMultiplier.value, endX, endY, angle + Math.PI / 3 + random());
+        drawBranch(iteration - 1,
+                   length * options.sideLengthMultiplier.value,
+                   endX, endY,
+                   angle + parseFloat(options.angle.value));
+        drawBranch(iteration - 1,
+                   length * options.middleLengthMultiplier.value,
+                   endX, endY,
+                   angle + 0 + random());
+        drawBranch(iteration - 1,
+                   length * options.sideLengthMultiplier.value,
+                   endX, endY,
+                   angle - parseFloat(options.angle.value));
     }
 }
 
@@ -92,10 +101,3 @@ oninput = function(e) {
 };
 
 startTree();
-
-/*
-options['sideLengthMultiplier'].value = 0.01;
-setInterval(function() {
-    options['sideLengthMultiplier'].value += 0.001;
-    startTree();
-}, 50);*/
