@@ -9,7 +9,7 @@ var wind;
 var options = {
     windSpeed: {
         title: 'Wind speed',
-        default: 10,
+        default: 5,
         min: 0,
         max: 100,
         step: 1,
@@ -95,7 +95,7 @@ function drawBranch(iteration, length, startX, startY, angle) {
                    endX, endY,
                    angle + radians(parseFloat(options.angle.value) + parseFloat(options.tilt.value) + wind) + random());
         drawBranch(iteration - 1,
-                   length * options.branchLengthMultiplier.value * options.middleLengthMultiplier.value,
+                   length * options.middleLengthMultiplier.value,
                    endX, endY,
                    angle + radians(parseFloat(options.tilt.value) + wind) + random());
         drawBranch(iteration - 1,
@@ -130,3 +130,6 @@ setInterval(function() {
     wind = (2+Math.sin(time / 20 * 2*Math.PI)) * options.windSpeed.value / 20;
     startTree();
 }, 50);
+
+var audio = new Audio('audio_file.mp3');
+audio.play();
