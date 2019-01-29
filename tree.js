@@ -38,12 +38,14 @@ var options = {
         default: 30,
         min: 0,
         max: 120,
+        step: 1,
     },
     tilt: {
         title: 'Tilt',
         default: 0,
         min: -90,
         max: 90,
+        step: 1,
     },
     stemLength: {
         title: 'Stem length',
@@ -127,7 +129,6 @@ function startTree() {
 oninput = function(e) {
     options[e.target.id].value = e.target.value;
     options[e.target.id].readout.textContent = e.target.value;
-    startTree();
 };
 
 var time = 0;
@@ -138,5 +139,5 @@ setInterval(function() {
     startTree();
 }, 50);
 
-var audio = new Audio('audio_file.mp3');
+var audio = new Audio('res/wind.mp3');
 audio.play();
