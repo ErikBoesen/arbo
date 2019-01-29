@@ -6,13 +6,13 @@ var ctx = canvas.getContext('2d');
 const CONTROLS = document.getElementById('controls');
 
 var options = {
-    sideLengthMultiplier: {
+    branchLengthMultiplier: {
         default: .75,
         min: 0,
         max: 1,
     },
     middleLengthMultiplier: {
-        default: .5,
+        default: .8,
         min: 0,
         max: 1,
     },
@@ -23,9 +23,9 @@ var options = {
         step: 1,
     },
     angle: {
-        default: (Math.PI / 3),
+        default: 30,
         min: 0,
-        max: (Math.PI),
+        max: 120,
     },
 };
 
@@ -68,15 +68,15 @@ function drawBranch(iteration, length, startX, startY, angle) {
     ctx.lineTo(endX, height - endY);
     if (iteration > 0) {
         drawBranch(iteration - 1,
-                   length * options.sideLengthMultiplier.value,
+                   length * options.branchLengthMultiplier.value,
                    endX, endY,
                    angle + parseFloat(options.angle.value));
         drawBranch(iteration - 1,
-                   length * options.middleLengthMultiplier.value,
+                   length * options.branchLengthMultiplier.value * options.middleLengthMultiplier.value,
                    endX, endY,
                    angle + 0 + random());
         drawBranch(iteration - 1,
-                   length * options.sideLengthMultiplier.value,
+                   length * options.branchLengthMultiplier.value,
                    endX, endY,
                    angle - parseFloat(options.angle.value));
     }
