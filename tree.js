@@ -27,6 +27,11 @@ var options = {
         min: 0,
         max: 120,
     },
+    tilt: {
+        default: 0,
+        min: -90,
+        max: 90,
+    },
 };
 
 for (option in options) {
@@ -60,6 +65,9 @@ ctx.strokeStyle = 'white';
 function random() {
     return (Math.random() - 0.5) / 80;
 }
+function radians(degrees) {
+    return degrees * Math.PI / 180;
+}
 var height = window.innerHeight;
 function drawBranch(iteration, length, startX, startY, angle) {
     ctx.moveTo(startX, height - startY);
@@ -70,15 +78,15 @@ function drawBranch(iteration, length, startX, startY, angle) {
         drawBranch(iteration - 1,
                    length * options.branchLengthMultiplier.value,
                    endX, endY,
-                   angle + parseFloat(options.angle.value) * Math.PI / 180);
+                   angle + radians(parseFloat(options.angle.value) + parseFloat(options.tilt.value)) + random());
         drawBranch(iteration - 1,
                    length * options.branchLengthMultiplier.value * options.middleLengthMultiplier.value,
                    endX, endY,
-                   angle + 0 + random());
+                   angle + radians(parseFloat(options.tilt.value)) + random());
         drawBranch(iteration - 1,
                    length * options.branchLengthMultiplier.value,
                    endX, endY,
-                   angle - parseFloat(options.angle.value) * Math.PI / 180);
+                   angle + radians(-parseFloat(options.angle.value) + parseFloat(options.tilt.value)) + random());
     }
 }
 
