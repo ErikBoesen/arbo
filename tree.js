@@ -45,6 +45,13 @@ var options = {
         min: -90,
         max: 90,
     },
+    stemLength: {
+        title: 'Stem length',
+        default: 100,
+        min: 0,
+        max: 200,
+        step: 1,
+    },
 };
 
 
@@ -111,9 +118,9 @@ function startTree() {
 
     // Draw extra line at the bottom so that leaves don't touch the ground too quickly
     ctx.moveTo(canvas.width / 2, canvas.height);
-    ctx.lineTo(canvas.width / 2, canvas.height - 100);
+    ctx.lineTo(canvas.width / 2, canvas.height - parseInt(options.stemLength.value));
 
-    drawBranch(options.iterations.value, 100, canvas.width / 2, 100, Math.PI / 2);
+    drawBranch(options.iterations.value, 100, canvas.width / 2, parseInt(options.stemLength.value), Math.PI / 2);
     ctx.stroke();
 }
 
