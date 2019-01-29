@@ -70,7 +70,7 @@ function drawBranch(iteration, length, startX, startY, angle) {
         drawBranch(iteration - 1,
                    length * options.branchLengthMultiplier.value,
                    endX, endY,
-                   angle + parseFloat(options.angle.value));
+                   angle + parseFloat(options.angle.value) * Math.PI / 180);
         drawBranch(iteration - 1,
                    length * options.branchLengthMultiplier.value * options.middleLengthMultiplier.value,
                    endX, endY,
@@ -78,7 +78,7 @@ function drawBranch(iteration, length, startX, startY, angle) {
         drawBranch(iteration - 1,
                    length * options.branchLengthMultiplier.value,
                    endX, endY,
-                   angle - parseFloat(options.angle.value));
+                   angle - parseFloat(options.angle.value) * Math.PI / 180);
     }
 }
 
