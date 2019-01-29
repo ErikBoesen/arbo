@@ -7,27 +7,32 @@ const CONTROLS = document.getElementById('controls');
 
 var options = {
     branchLengthMultiplier: {
+        title: 'Branch scale',
         default: .75,
         min: 0,
         max: 1,
     },
     middleLengthMultiplier: {
+        title: 'Middle scale',
         default: .8,
         min: 0,
         max: 1,
     },
     iterations: {
+        title: 'Iterations',
         default: 8,
         min: 3,
         max: 12,
         step: 1,
     },
     angle: {
+        title: 'Spread angle',
         default: 30,
         min: 0,
         max: 120,
     },
     tilt: {
+        title: 'Tilt angle',
         default: 0,
         min: -90,
         max: 90,
@@ -39,7 +44,7 @@ for (option in options) {
     control.className = 'control';
 
     label = document.createElement('label');
-    label.textContent = option;
+    label.textContent = options[option].title;
     options[option].value = options[option].default;
     control.appendChild(label);
 
