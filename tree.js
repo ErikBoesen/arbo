@@ -19,7 +19,12 @@ var options = {
         min: 3,
         max: 12,
         step: 1,
-    }
+    },
+    angle: {
+        default: Math.PI / 3,
+        min: -Math.PI,
+        max:  Math.PI,
+    },
 };
 
 const CONTROLS = document.getElementById('controls');
@@ -27,20 +32,27 @@ const CONTROLS = document.getElementById('controls');
 for (option in options) {
     control = document.createElement('div');
     control.className = 'control';
+
+    label = document.createElement('label');
+    label.textContent = option;
+    options[option].value = options[option].default;
+    control.appendChild(label);
+
     slider = document.createElement('input');
-    readout = document.createElement('label');
     slider.type = 'range';
     slider.min = options[option].min;
     slider.max = options[option].max;
     slider.value = options[option].default;
     slider.id = option;
     slider.step = options[option].step || 0.01;
-    readout.textContent = options[option].default;
-    options[option].value = options[option].default;
     options[option].slider = slider;
-    options[option].readout = readout;
     control.appendChild(slider);
+
+    readout = document.createElement('label');
+    readout.textContent = options[option].default;
+    options[option].readout = readout;
     control.appendChild(readout);
+
     CONTROLS.appendChild(control);
 }
 
