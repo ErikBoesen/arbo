@@ -127,6 +127,6 @@ var time = 0;
 startTree();
 setInterval(function() {
     time++;
-    wind = (2+Math.sin(time / 20 * 2*Math.PI)) * options.windSpeed.value / 10;
+    wind = (2+Math.sin(time / 20 * 2*Math.PI)) * options.windSpeed.value / 20;
     startTree();
 }, 50);
