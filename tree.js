@@ -72,7 +72,7 @@ for (option in options) {
     slider.max = options[option].max;
     slider.value = options[option].default;
     slider.id = option;
-    slider.step = options[option].step || 0.01;
+    slider.step = options[option].step || 1;
     options[option].slider = slider;
     control.appendChild(slider);
 
@@ -100,15 +100,15 @@ function drawBranch(iteration, length, startX, startY, angle) {
     ctx.lineTo(endX, height - endY);
     if (iteration > 0) {
         drawBranch(iteration - 1,
-                   length * options.branchLengthMultiplier.value,
+                   length * options.branchLengthMultiplier.value / 100,
                    endX, endY,
                    angle + radians(parseFloat(options.angle.value) + parseFloat(options.tilt.value) + wind) + random());
         drawBranch(iteration - 1,
-                   length * options.middleLengthMultiplier.value,
+                   length * options.middleLengthMultiplier.value / 100,
                    endX, endY,
                    angle + radians(parseFloat(options.tilt.value) + wind) + random());
         drawBranch(iteration - 1,
-                   length * options.branchLengthMultiplier.value,
+                   length * options.branchLengthMultiplier.value / 100,
                    endX, endY,
                    angle + radians(-parseFloat(options.angle.value) + parseFloat(options.tilt.value) + wind) + random());
     }
