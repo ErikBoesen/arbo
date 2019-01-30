@@ -131,12 +131,22 @@ oninput = function(e) {
     options[e.target.id].readout.textContent = e.target.value;
 };
 
+var audio = document.getElementById('wind_sound');
+
 var time = 0;
 startTree();
 setInterval(function() {
     time++;
     wind = (2+Math.sin(time / 20 * 2*Math.PI)) * options.windSpeed.value / 20;
+    audio.volume = options.windSpeed.value / options.windSpeed.max;
     startTree();
 }, 50);
 
-document.getElementById('wind_sound').play();
+var playButton = document.getElementById('play_button');
+playButton.onclick = function() {
+    if (audio.paused) {
+        audio.play();
+    } else {
+        audio.pause();
+    }
+}
