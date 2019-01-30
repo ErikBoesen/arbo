@@ -31,7 +31,7 @@ var options = {
         min: 3,
         max: 12,
     },
-    angle: {
+    spread: {
         title: 'Spread',
         default: 30,
         min: 0,
@@ -97,7 +97,7 @@ function drawBranch(iteration, length, startX, startY, angle) {
         drawBranch(iteration - 1,
                    length * options.branchLengthMultiplier.value / 100,
                    endX, endY,
-                   angle + radians(parseFloat(options.angle.value) + parseFloat(options.tilt.value) + wind) + random());
+                   angle + radians(parseFloat(options.spread.value) + parseFloat(options.tilt.value) + wind) + random());
         drawBranch(iteration - 1,
                    length * options.middleLengthMultiplier.value / 100,
                    endX, endY,
@@ -105,7 +105,7 @@ function drawBranch(iteration, length, startX, startY, angle) {
         drawBranch(iteration - 1,
                    length * options.branchLengthMultiplier.value / 100,
                    endX, endY,
-                   angle + radians(-parseFloat(options.angle.value) + parseFloat(options.tilt.value) + wind) + random());
+                   angle + radians(-parseFloat(options.spread.value) + parseFloat(options.tilt.value) + wind) + random());
     }
 }
 
