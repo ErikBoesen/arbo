@@ -8,7 +8,7 @@ var wind;
 
 var options = {
     windSpeed: {
-        title: 'Wind speed',
+        title: 'Wind',
         default: 5,
         min: 0,
         max: 100,
@@ -51,7 +51,7 @@ var options = {
     },
 };
 
-
+// Make options list
 for (option in options) {
     control = document.createElement('div');
     control.className = 'control';
