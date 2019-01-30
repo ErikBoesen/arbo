@@ -146,7 +146,9 @@ var playButton = document.getElementById('play_button');
 playButton.onclick = function() {
     if (audio.paused) {
         audio.play();
+        playButton.textContent = '||';
     } else {
         audio.pause();
+        playButton.textContent = '▶';
     }
 }

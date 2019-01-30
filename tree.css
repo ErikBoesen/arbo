@@ -29,3 +29,13 @@ body {
 .control input {
     vertical-align: middle;
 }
+#play_button {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    color: white;
+    background: none;
+    border: none;
+    font-size: 40px;
+}
