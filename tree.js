@@ -80,10 +80,6 @@ for (option in options) {
 }
 
 ctx.strokeStyle = 'white';
-function random() {
-    //return (Math.random() - 0.5) / 80;
-    return 0;
-}
 function radians(degrees) {
     return degrees * Math.PI / 180;
 }
@@ -97,15 +93,15 @@ function drawBranch(iteration, length, startX, startY, angle) {
         drawBranch(iteration - 1,
                    length * options.branchLengthMultiplier.value / 100,
                    endX, endY,
-                   angle + radians(parseFloat(options.spread.value) + parseFloat(options.tilt.value) + wind) + random());
+                   angle + radians(parseFloat(options.spread.value) + parseFloat(options.tilt.value) + wind));
         drawBranch(iteration - 1,
                    length * options.middleLengthMultiplier.value / 100,
                    endX, endY,
-                   angle + radians(parseFloat(options.tilt.value) + wind) + random());
+                   angle + radians(parseFloat(options.tilt.value) + wind));
         drawBranch(iteration - 1,
                    length * options.branchLengthMultiplier.value / 100,
                    endX, endY,
-                   angle + radians(-parseFloat(options.spread.value) + parseFloat(options.tilt.value) + wind) + random());
+                   angle + radians(-parseFloat(options.spread.value) + parseFloat(options.tilt.value) + wind));
     }
 }
 
