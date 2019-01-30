@@ -12,7 +12,6 @@ body {
     text-transform: lowercase;
 }
 #canv {
-    background: #333;
 }
 #controls {
     position: fixed;
