@@ -9,7 +9,6 @@ body {
     color: #ddd;
     font: 15px Trebuchet MS;
     font-weight: 100;
-    text-transform: lowercase;
 }
 #canv {
 }
@@ -24,6 +23,7 @@ body {
 .control label {
     display: inline-block;
     width: 90px;
+    text-transform: lowercase;
 }
 .control label:first-of-type {
     text-align: right;
@@ -44,4 +44,10 @@ body {
 }
 #github {
     position: fixed;
+    transform: rotate(45deg);
+    top: 30px;
+    right: -50px;
+    background: white;
+    color: #333;
+    padding: 10px 50px;
 }
