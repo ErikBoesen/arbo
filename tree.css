@@ -11,6 +11,8 @@ body {
     font-weight: 100;
 }
 #canv {
+    width: 100vw;
+    height: 100vh;
 }
 #controls {
     position: fixed;

@@ -1,6 +1,7 @@
 var canvas = document.getElementById('canv');
-canvas.height = window.innerHeight;
-canvas.width  = window.innerWidth;
+const RESOLUTION = 2;
+canvas.height = window.innerHeight * RESOLUTION;
+canvas.width  = window.innerWidth * RESOLUTION;
 var ctx = canvas.getContext('2d');
 
 const CONTROLS = document.getElementById('controls');
