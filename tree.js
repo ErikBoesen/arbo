@@ -84,12 +84,11 @@ ctx.strokeStyle = 'white';
 function radians(degrees) {
     return degrees * Math.PI / 180;
 }
-var height = window.innerHeight;
 function drawBranch(iteration, length, startX, startY, angle) {
-    ctx.moveTo(startX, height - startY);
+    ctx.moveTo(startX, canvas.height - startY);
     var endX = startX + Math.cos(angle) * length;
     var endY = startY + Math.sin(angle) * length;
-    ctx.lineTo(endX, height - endY);
+    ctx.lineTo(endX, canvas.height - endY);
     if (iteration > 0) {
         drawBranch(iteration - 1,
                    length * options.branchLengthMultiplier.value / 100,
@@ -114,7 +113,7 @@ function startTree() {
     ctx.moveTo(canvas.width / 2, canvas.height);
     ctx.lineTo(canvas.width / 2, canvas.height - parseInt(options.stemLength.value));
 
-    drawBranch(options.iterations.value, 100, canvas.width / 2, parseInt(options.stemLength.value), Math.PI / 2);
+    drawBranch(options.iterations.value, RESOLUTION * 100, canvas.width / 2, parseInt(options.stemLength.value), Math.PI / 2);
     ctx.stroke();
 }
 
